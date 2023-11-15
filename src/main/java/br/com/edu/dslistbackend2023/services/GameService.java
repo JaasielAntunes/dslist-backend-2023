@@ -19,8 +19,13 @@ public class GameService {
 
     @Transactional(readOnly = true)
     public Optional<GameDTO> findById(Long id) {
-        Game result = gameRepository.findById(id).get();
-        return Optional.of(new GameDTO(result));
+        Optional<Game> game = gameRepository.findById(id);
+
+        if (game.isEmpty()) {
+            return Optional.empty();
+        }
+
+        return game.map(GameDTO::new);
     }
 
     @Transactional(readOnly = true)
