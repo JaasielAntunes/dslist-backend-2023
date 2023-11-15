@@ -8,7 +8,6 @@ import org.springframework.beans.BeanUtils;
 
 @Getter
 @Setter
-@NoArgsConstructor
 public class GameDTO {
 
     private Long id;
